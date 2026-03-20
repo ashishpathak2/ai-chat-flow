@@ -1,0 +1,80 @@
+@import 'reactflow/dist/style.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #f8f8f6;
+  color: #1a1a1a;
+  font-family: 'DM Sans', sans-serif;
+  overflow: hidden;
+}
+
+/* React Flow */
+.react-flow__edge-path {
+  stroke: #c4c4bc !important;
+  stroke-width: 1.5 !important;
+}
+
+.react-flow__handle {
+  background: #1a1a1a !important;
+  border: 2px solid #f8f8f6 !important;
+  width: 10px !important;
+  height: 10px !important;
+}
+
+.react-flow__controls {
+  box-shadow: none !important;
+  border: 1px solid #e8e8e4 !important;
+  border-radius: 8px !important;
+  overflow: hidden;
+}
+
+.react-flow__controls-button {
+  background: #fff !important;
+  border-bottom: 1px solid #e8e8e4 !important;
+  color: #666 !important;
+}
+
+.react-flow__controls-button:hover {
+  background: #f4f4f0 !important;
+}
+
+.react-flow__minimap {
+  border: 1px solid #e8e8e4 !important;
+  border-radius: 8px !important;
+  overflow: hidden;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #ddd; border-radius: 4px; }
+
+/* Shimmer */
+.shimmer-line {
+  background: linear-gradient(90deg, #f0f0ec 25%, #e8e8e4 50%, #f0f0ec 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.6s infinite;
+  border-radius: 3px;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+  animation: fadeIn 0.3s ease forwards;
+}
