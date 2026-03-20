@@ -7,7 +7,7 @@ const app = express()
 
 // ─── Middleware ───────────────────────────────────────────────
 app.use(cors({
-  origin: ['http://localhost:5173', 'http://localhost:4173'],
+  origin: ['http://localhost:5173', "https://ai-chat-flow-five.vercel.app"],
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true,

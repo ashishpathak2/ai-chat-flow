@@ -1,7 +1,9 @@
 import axios from 'axios'
 
+const API_URL = import.meta.env.VITE_API_URL || '/api'
+
 const api = axios.create({
-  baseURL: '/api',
+  baseURL: API_URL,
   headers: {
     'Content-Type': 'application/json',
   },
@@ -23,6 +25,7 @@ api.interceptors.response.use(
       error.response?.data?.error ||
       error.message ||
       'Something went wrong'
+
     return Promise.reject(new Error(message))
   }
 )
