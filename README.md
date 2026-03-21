@@ -80,7 +80,8 @@ npm install
 
 ```bash
 cd server
-cp .env.example .env
+create a .env file
+
 ```
 
 Edit `server/.env`:
@@ -90,10 +91,6 @@ PORT=5000
 MONGO_URI=mongodb+srv://<user>:<pass>@cluster0.xxxxx.mongodb.net/ai-flow-app?retryWrites=true&w=majority
 OPENROUTER_API_KEY=sk-or-v1-your-key-here
 ```
-
-**Get your keys:**
-- **MongoDB Atlas**: [cloud.mongodb.com](https://cloud.mongodb.com) → Free M0 cluster → Get connection string
-- **OpenRouter**: [openrouter.ai/keys](https://openrouter.ai/keys) → Create API key
 
 ### 3. Run Development Servers
 
@@ -116,105 +113,3 @@ npm run dev
 Visit **http://localhost:5173** in your browser.
 
 ---
-
-## 🔌 API Reference
-
-### `POST /api/ask-ai`
-
-Send a prompt, receive AI response.
-
-**Request:**
-```json
-{
-  "prompt": "What is the capital of France?"
-}
-```
-
-**Response:**
-```json
-{
-  "success": true,
-  "response": "The capital of France is Paris."
-}
-```
-
----
-
-### `POST /api/save`
-
-Save a prompt+response pair to MongoDB.
-
-**Request:**
-```json
-{
-  "prompt": "What is the capital of France?",
-  "response": "The capital of France is Paris."
-}
-```
-
-**Response:**
-```json
-{
-  "success": true,
-  "message": "Flow saved successfully",
-  "data": {
-    "id": "65f...",
-    "prompt": "...",
-    "response": "...",
-    "createdAt": "2024-03-01T..."
-  }
-}
-```
-
----
-
-### `GET /api/flows`
-
-Retrieve all saved flows (most recent first, limit 50).
-
----
-
-### `GET /health`
-
-Server health check.
-
----
-
-## 🎨 UI Features
-
-- **Dark terminal aesthetic** with green accent (#00ff88)
-- **Dot-grid background** on the canvas
-- **Animated edges** between nodes with glow effect
-- **Shimmer loading** skeleton in Result Node
-- **Toast notifications** for success/error states
-- **Draggable nodes** — reposition freely on canvas
-- **MiniMap** for canvas navigation
-- **Zoom controls** with scroll wheel
-
----
-
-## 🔒 Security Notes
-
-- API keys are **never** exposed to the frontend
-- All AI calls are made server-side only
-- CORS is configured for localhost only (update for production)
-- Input validation on all endpoints
-
----
-
-## 🚢 Deployment
-
-### Frontend (Vercel/Netlify)
-```bash
-cd client
-npm run build
-# Deploy the dist/ folder
-# Set VITE_API_URL env var to your backend URL
-```
-
-Update `vite.config.js` proxy → use `VITE_API_URL` env var in `api.js` for production.
-
-### Backend (Railway/Render)
-- Push `server/` folder
-- Set environment variables: `PORT`, `MONGO_URI`, `OPENROUTER_API_KEY`
-- Start command: `node server.js`
